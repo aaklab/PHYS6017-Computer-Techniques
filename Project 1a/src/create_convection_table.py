@@ -13,6 +13,13 @@ from config import SimulationConfig
 def create_convection_parameters_table():
     """Create a professional table of convection parameters."""
     
+    # Ensure output directories exist in the parent directory (Project 1a root)
+    import os
+    reporting_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "reporting")
+    figures_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "outputs", "figures")
+    os.makedirs(reporting_dir, exist_ok=True)
+    os.makedirs(figures_dir, exist_ok=True)
+    
     # Set up the figure
     fig, ax = plt.subplots(figsize=(12, 8))
     ax.axis('tight')
@@ -65,14 +72,14 @@ def create_convection_parameters_table():
     # Save the table
     plt.tight_layout()
     plt.subplots_adjust(top=0.75)
-    plt.savefig('reporting/convection_parameters_table.pdf', 
+    plt.savefig(os.path.join(reporting_dir, 'convection_parameters_table.pdf'), 
                 bbox_inches='tight', dpi=300, facecolor='white')
-    plt.savefig('reporting/convection_parameters_table.png', 
+    plt.savefig(os.path.join(figures_dir, 'convection_parameters_table.png'), 
                 bbox_inches='tight', dpi=300, facecolor='white')
     
     print("✅ Convection parameters table saved:")
-    print("   - reporting/convection_parameters_table.pdf")
-    print("   - reporting/convection_parameters_table.png")
+    print(f"   - {reporting_dir}/convection_parameters_table.pdf")
+    print(f"   - {figures_dir}/convection_parameters_table.png")
     
     plt.close()
 
@@ -135,14 +142,14 @@ def create_validation_results_table():
     # Save the table
     plt.tight_layout()
     plt.subplots_adjust(top=0.75)
-    plt.savefig('reporting/convection_validation_table.pdf', 
+    plt.savefig(os.path.join(reporting_dir, 'convection_validation_table.pdf'), 
                 bbox_inches='tight', dpi=300, facecolor='white')
-    plt.savefig('reporting/convection_validation_table.png', 
+    plt.savefig(os.path.join(figures_dir, 'convection_validation_table.png'), 
                 bbox_inches='tight', dpi=300, facecolor='white')
     
     print("✅ Convection validation table saved:")
-    print("   - reporting/convection_validation_table.pdf")
-    print("   - reporting/convection_validation_table.png")
+    print(f"   - {reporting_dir}/convection_validation_table.pdf")
+    print(f"   - {figures_dir}/convection_validation_table.png")
     
     plt.close()
 
@@ -206,14 +213,14 @@ def create_literature_comparison_table():
     # Save the table
     plt.tight_layout()
     plt.subplots_adjust(top=0.78)
-    plt.savefig('reporting/literature_comparison_table.pdf', 
+    plt.savefig(os.path.join(reporting_dir, 'literature_comparison_table.pdf'), 
                 bbox_inches='tight', dpi=300, facecolor='white')
-    plt.savefig('reporting/literature_comparison_table.png', 
+    plt.savefig(os.path.join(figures_dir, 'literature_comparison_table.png'), 
                 bbox_inches='tight', dpi=300, facecolor='white')
     
     print("✅ Literature comparison table saved:")
-    print("   - reporting/literature_comparison_table.pdf")
-    print("   - reporting/literature_comparison_table.png")
+    print(f"   - {reporting_dir}/literature_comparison_table.pdf")
+    print(f"   - {figures_dir}/literature_comparison_table.png")
     
     plt.close()
 

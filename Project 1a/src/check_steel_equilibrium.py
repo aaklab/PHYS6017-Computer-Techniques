@@ -101,10 +101,19 @@ def check_steel_equilibration():
     plt.grid(True, alpha=0.3)
     plt.legend()
     plt.tight_layout()
-    plt.savefig('steel_equilibration_check.png', dpi=150, bbox_inches='tight')
+    
+    # Save to appropriate folders
+    import os
+    reporting_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "reporting")
+    figures_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "outputs", "figures")
+    os.makedirs(reporting_dir, exist_ok=True)
+    os.makedirs(figures_dir, exist_ok=True)
+    
+    output_path = os.path.join(figures_dir, 'steel_equilibration_check.png')
+    plt.savefig(output_path, dpi=150, bbox_inches='tight')
     plt.close()
     
-    print(f"\nPlot saved as: steel_equilibration_check.png")
+    print(f"\nPlot saved as: {output_path}")
     
     return {
         'final_temp': final_temp,

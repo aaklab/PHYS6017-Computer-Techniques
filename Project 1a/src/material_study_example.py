@@ -29,12 +29,13 @@ def demonstrate_material_configs():
     print_material_properties()
     print_standard_q_values()
     
-    # Ensure reporting directory exists
+    # Ensure reporting directory exists in the parent directory (Project 1a root)
     import os
-    os.makedirs("reporting", exist_ok=True)
+    reporting_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "reporting")
+    os.makedirs(reporting_dir, exist_ok=True)
     
     # Create PDF for all plots
-    with PdfPages('reporting/material_study_results.pdf') as pdf:
+    with PdfPages(os.path.join(reporting_dir, 'material_study_results.pdf')) as pdf:
         
         print("1. SINGLE MATERIAL AT DIFFERENT HEAT INJECTION RATES")
         print("-" * 50)
@@ -172,7 +173,7 @@ def demonstrate_material_configs():
                 config = study_configs[material][Q]
                 print(f"  {material.title()} at Q={Q}: α={config.alpha:.1e} m²/s")
     
-    print(f"\nAll plots saved to: reporting/material_study_results.pdf")
+    print(f"\nAll plots saved to: {reporting_dir}/material_study_results.pdf")
 
 
 def run_steady_state_analysis():
@@ -209,7 +210,7 @@ def run_steady_state_analysis():
             }
     
     # Create summary plot and save to PDF
-    with PdfPages('reporting/steady_state_analysis.pdf') as pdf:
+    with PdfPages(os.path.join(reporting_dir, 'steady_state_analysis.pdf')) as pdf:
         fig, ax = plt.subplots(figsize=(10, 6))
         
         colors = ['red', 'blue', 'green']
@@ -237,7 +238,7 @@ def run_steady_state_analysis():
         pdf.savefig(fig, bbox_inches='tight')
         plt.close(fig)
     
-    print(f"Steady-state analysis plot saved to: reporting/steady_state_analysis.pdf")
+    print(f"Steady-state analysis plot saved to: {reporting_dir}/steady_state_analysis.pdf")
     
     # Print summary table
     print("\nSteady-State Temperature Summary:")
@@ -260,8 +261,8 @@ if __name__ == "__main__":
     print("DEMONSTRATION COMPLETED")
     print("="*60)
     print("\nPDF files generated:")
-    print("1. reporting/material_study_results.pdf - Material comparison and Q studies")
-    print("2. reporting/steady_state_analysis.pdf - Comprehensive steady-state analysis")
+    print(f"1. {reporting_dir}/material_study_results.pdf - Material comparison and Q studies")
+    print(f"2. {reporting_dir}/steady_state_analysis.pdf - Comprehensive steady-state analysis")
     print("\nKey takeaways:")
     print("1. Use SimulationConfig.get_material_config(material, Q) for single configs")
     print("2. Use SimulationConfig.steady_state_study_configs() for comprehensive studies")
