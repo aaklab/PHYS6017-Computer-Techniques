@@ -39,11 +39,12 @@ except ImportError:
 def generate_required_results():
     """Generate ONLY the required results - nothing else."""
     
-    # Ensure reporting directory exists
+    # Ensure reporting directory exists in the parent directory (Project 1a root)
     import os
-    os.makedirs("reporting", exist_ok=True)
+    reporting_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "reporting")
+    os.makedirs(reporting_dir, exist_ok=True)
     
-    filename = "reporting/required_results.pdf"
+    filename = os.path.join(reporting_dir, "required_results.pdf")
     print(f"Generating required results: {filename}")
     print("Each table and plot on a separate page...")
     
