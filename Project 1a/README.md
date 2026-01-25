@@ -20,7 +20,7 @@ This implementation addresses all feedback issues:
 pip install numpy matplotlib
 
 # Run the main simulation (all source code is in src/)
-python run_simulation.py
+python start.py
 
 # Or run directly from src directory
 cd src
@@ -33,7 +33,7 @@ python generate_required_results.py
 Project 1a/
 ├── README.md
 ├── requirements.txt
-├── run_simulation.py      # Main entry point
+├── start.py               # Main entry point - START HERE
 ├── src/                   # All source code here
 │   ├── __init__.py
 │   ├── config.py          # Configuration parameters (Q now integer)
