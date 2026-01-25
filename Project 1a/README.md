@@ -19,11 +19,11 @@ This implementation addresses all feedback issues:
 # Install dependencies
 pip install numpy matplotlib
 
-# Run the main simulation (all source code is in src/)
+# Run the main simulation (navigate to src directory first)
+cd src
 python start.py
 
-# Or run directly from src directory
-cd src
+# Or run the main generator directly
 python generate_required_results.py
 ```
 
@@ -33,18 +33,18 @@ python generate_required_results.py
 Project 1a/
 ├── README.md
 ├── requirements.txt
-├── start.py               # Main entry point - START HERE
-├── src/                   # All source code here
+├── src/                   # ALL Python source code is here
+│   ├── start.py           # Main entry point - START HERE
+│   ├── generate_required_results.py  # Generate all required figures and tables
 │   ├── __init__.py
-│   ├── config.py          # Configuration parameters (Q now integer)
-│   ├── grid.py            # Grid management (fixed disk sampling)
+│   ├── config.py          # Configuration parameters
+│   ├── grid.py            # Grid management
 │   ├── rng.py             # Random number generation
 │   ├── model.py           # Heat packet model
 │   ├── model_optimized.py # Performance-optimized version
-│   ├── simulate.py        # Main simulation engine (fixed initialization)
+│   ├── simulate.py        # Main simulation engine
 │   ├── observables.py     # Data collection and metrics
-│   ├── experiments.py     # Experiment framework (fully implemented)
-│   └── generate_required_results.py  # Generate all required figures and tables
+│   └── experiments.py     # Experiment framework
 ├── notebooks/
 │   └── report_figures.ipynb
 ├── reporting/             # Output directory
