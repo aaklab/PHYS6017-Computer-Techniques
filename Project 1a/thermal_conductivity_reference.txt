@@ -1,0 +1,23 @@
+THERMAL CONDUCTIVITY VALUES REFERENCE
+
+For inclusion in the Monte Carlo Heat Diffusion Report:
+
+The thermal conductivity values used for the physics correction (T ∝ 1/κ) were obtained from:
+
+CRC Handbook of Chemistry and Physics, 104th Edition (2023-2024), 
+Section 12: Properties of Solids, Table "Thermal Conductivity of Metals and Alloys"
+
+This is the standard reference for material properties in engineering and physics applications. All values are reported at room temperature (20-25°C).
+
+Material Properties Used:
+- Silver: 429 W/m·K
+- Gold: 318 W/m·K  
+- Copper: 401 W/m·K
+- Aluminum: 237 W/m·K
+- Iron: 80.4 W/m·K
+- Steel, Carbon (AISI 1010): 54 W/m·K
+- Steel, Stainless (304A): 16.2 W/m·K
+
+Citation Format:
+Rumble, J.R., Ed. (2023). CRC Handbook of Chemistry and Physics, 104th Edition. 
+CRC Press/Taylor & Francis, Boca Raton, FL.

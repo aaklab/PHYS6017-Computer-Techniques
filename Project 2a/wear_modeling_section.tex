@@ -1,0 +1,59 @@
+
+\subsection*{Wear Modelling and Introduced Wear Signals}
+
+In the absence of detailed contact mechanics modelling, mechanical wear is represented through physically motivated modifications to an ideal vibration signal. The baseline (non-wear) signal consists of a single periodic component at the fundamental rotation frequency together with additive measurement noise.
+
+Wear is introduced by superimposing additional deterministic components onto this baseline signal. These components are chosen to reflect well-established vibration signatures of mechanical defects in rotating machinery, including nonlinear contact forces, intermittent impacts, and modulation effects. The severity of wear is controlled through a dimensionless wear parameter $\lambda \in [0,1]$, which scales the amplitudes of all wear-related components simultaneously.
+
+\subsubsection*{Mathematical Formulation}
+
+The complete vibration signal incorporating wear effects is expressed as:
+
+\begin{equation}
+x(t) = A_0 \sin(2\pi f_0 t) + \sum_{k} A_k(\lambda) \sin(2\pi f_k t + \phi_k) + \eta(t)
+\end{equation}
+
+where $A_0 = 1.0$ represents the fundamental amplitude, $f_0 = 25$ Hz is the rotation frequency (1500 RPM), $A_k(\lambda)$ are wear-dependent amplitude scaling factors, and $\eta(t)$ is additive Gaussian noise with standard deviation $\sigma = 0.05 + 0.15\lambda$.
+
+\subsubsection*{Wear Component Specification}
+
+The wear model introduces six distinct frequency components, each representing different physical mechanisms of mechanical degradation:
+
+\begin{table}[h]
+\centering
+\caption{Wear signal components and their physical interpretation}
+\begin{tabular}{|l|c|c|l|}
+\hline
+\textbf{Component} & \textbf{Frequency} & \textbf{Amplitude} & \textbf{Physical Origin} \\
+\hline
+2nd Harmonic & $2f_0$ (50 Hz) & $0.3\lambda$ & Nonlinear contact forces \\
+3rd Harmonic & $3f_0$ (75 Hz) & $0.2\lambda$ & Higher-order nonlinearity \\
+Sub-harmonic & $0.5f_0$ (12.5 Hz) & $0.15\lambda$ & Intermittent contact \\
+Upper Sideband & $f_0 + 10$ Hz (35 Hz) & $0.1\lambda$ & Amplitude modulation \\
+Lower Sideband & $f_0 - 10$ Hz (15 Hz) & $0.1\lambda$ & Phase modulation \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{Physical Justification}
+
+The selection of these specific frequency components is based on established principles of rotating machinery diagnostics:
+
+\begin{itemize}
+\item \textbf{Harmonic components} ($2f_0$, $3f_0$) arise from nonlinear contact mechanics when surface irregularities cause time-varying stiffness and damping properties.
+\item \textbf{Sub-harmonic components} ($0.5f_0$) result from intermittent contact events, where mechanical clearances cause periodic loss of contact during rotation.
+\item \textbf{Sideband frequencies} ($f_0 \pm \Delta f$) emerge from amplitude and phase modulation effects, typically associated with bearing cage dynamics and load variations.
+\end{itemize}
+
+\subsubsection*{Wear Progression Characteristics}
+
+As the wear parameter $\lambda$ increases from 0 to 1, the model exhibits several key characteristics observed in real machinery degradation:
+
+\begin{enumerate}
+\item \textbf{Spectral enrichment}: The frequency spectrum evolves from a single peak at $f_0$ to a complex multi-peak structure.
+\item \textbf{Amplitude growth}: Wear-related components grow proportionally to $\lambda$, while the fundamental remains constant.
+\item \textbf{Noise increase}: Broadband noise levels increase with wear, reflecting surface roughening and impact events.
+\item \textbf{Nonlinear scaling}: Some diagnostic indicators (e.g., harmonic ratios) exhibit quadratic dependence on $\lambda$, providing enhanced sensitivity.
+\end{enumerate}
+
+This simplified yet physically motivated approach enables systematic investigation of signal processing techniques for early fault detection while maintaining computational tractability for academic demonstration purposes.
