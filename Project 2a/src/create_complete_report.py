@@ -9,10 +9,8 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
 import numpy as np
-import sys
-import os
-sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
+# Import from same directory (src)
 from signal_generator import VibrationSignalGenerator
 from vibration_analysis import VibrationAnalyzer
 

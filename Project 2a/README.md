@@ -5,12 +5,14 @@ This project demonstrates early detection of mechanical wear in rotating machine
 ## Project Structure
 
 ```
-├── src/                                    # Source code
-│   ├── __init__.py                        # Package initialization
+├── src/                                    # ALL Python source code here
+│   ├── start.py                           # Main entry point - START HERE
+│   ├── create_complete_report.py          # Generate comprehensive PDF report
+│   ├── wear_modeling_section.py           # Wear modeling documentation
 │   ├── signal_generator.py                # Vibration signal generation
 │   ├── vibration_analysis.py              # Signal processing and analysis
-│   └── demo_notebook.ipynb                # Interactive demonstration
-├── create_complete_report.py              # Generate comprehensive PDF report
+│   ├── demo_notebook.ipynb                # Interactive demonstration
+│   └── __init__.py                        # Package initialization
 ├── complete_vibration_analysis_report.pdf # Complete analysis report (9 pages)
 ├── requirements.txt                       # Python dependencies
 └── README.md                              # This file
@@ -26,6 +28,12 @@ This project demonstrates early detection of mechanical wear in rotating machine
 
 ## Usage
 
+### Quick Start
+```bash
+cd src
+python start.py
+```
+
 ### Interactive Analysis
 ```bash
 cd src
@@ -34,6 +42,7 @@ jupyter notebook demo_notebook.ipynb
 
 ### Generate Complete Report
 ```bash
+cd src
 python create_complete_report.py
 ```
 
