@@ -19,6 +19,11 @@ def create_complete_report():
     
     print("Creating comprehensive vibration analysis report...")
     
+    # Ensure reporting directory exists in the parent directory (Project 2a root)
+    import os
+    reporting_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "reporting")
+    os.makedirs(reporting_dir, exist_ok=True)
+    
     # Set matplotlib parameters for high-quality output
     plt.rcParams['figure.dpi'] = 300
     plt.rcParams['savefig.dpi'] = 300
@@ -56,7 +61,7 @@ def create_complete_report():
             'hf_power': indicators['high_frequency_power']
         })
     
-    pdf_filename = 'complete_vibration_analysis_report.pdf'
+    pdf_filename = os.path.join(reporting_dir, 'complete_vibration_analysis_report.pdf')
     print(f"Creating comprehensive PDF: {pdf_filename}")
     
     with PdfPages(pdf_filename) as pdf:

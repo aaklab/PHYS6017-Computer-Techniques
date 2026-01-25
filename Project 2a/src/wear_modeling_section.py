@@ -17,6 +17,13 @@ from vibration_analysis import VibrationAnalyzer
 def create_wear_modeling_documentation():
     """Create comprehensive documentation of the wear modeling approach."""
     
+    # Ensure output directories exist in the parent directory (Project 2a root)
+    import os
+    reporting_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "reporting")
+    docs_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "docs")
+    os.makedirs(reporting_dir, exist_ok=True)
+    os.makedirs(docs_dir, exist_ok=True)
+    
     # Initialize for analysis
     fs = 1000
     rotation_freq = 25.0
@@ -26,7 +33,7 @@ def create_wear_modeling_documentation():
     duration = 2.0
     wear_levels = [0.0, 0.3, 0.7, 1.0]
     
-    with PdfPages('wear_modeling_supplement.pdf') as pdf:
+    with PdfPages(os.path.join(reporting_dir, 'wear_modeling_supplement.pdf')) as pdf:
         
         # Page 1: Wear Signal Theory and Implementation
         fig, ax = plt.subplots(figsize=(11, 8.5))
@@ -303,13 +310,13 @@ As the wear parameter $\\lambda$ increases from 0 to 1, the model exhibits sever
 This simplified yet physically motivated approach enables systematic investigation of signal processing techniques for early fault detection while maintaining computational tractability for academic demonstration purposes.
 """
     
-    # Write text content to file
-    with open('wear_modeling_section.tex', 'w') as f:
+    # Write text content to file in docs folder
+    with open(os.path.join(docs_dir, 'wear_modeling_section.tex'), 'w') as f:
         f.write(text_content)
     
     print("✅ Wear modeling documentation created:")
-    print("  • wear_modeling_supplement.pdf - 4-page detailed analysis")
-    print("  • wear_modeling_section.tex - LaTeX section for paper")
+    print(f"  • {reporting_dir}/wear_modeling_supplement.pdf - 4-page detailed analysis")
+    print(f"  • {docs_dir}/wear_modeling_section.tex - LaTeX section for paper")
     print("\nDocumentation includes:")
     print("  - Mathematical formulation and component tables")
     print("  - Time and frequency domain progression analysis")
