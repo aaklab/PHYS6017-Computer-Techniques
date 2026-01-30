@@ -1,0 +1,31 @@
+# Monte Carlo Portfolio Risk Simulation Configuration
+
+data:
+  source: yahoo_finance          # Data source (currently only yahoo_finance supported)
+  tickers: ["SPY", "AGG"]        # List of ticker symbols for ETFs/stocks to include in portfolio
+  start_date: "2019-01-01"       # Start date for historical data (YYYY-MM-DD format)
+  end_date: "2023-12-31"         # End date for historical data (YYYY-MM-DD format)
+  price_field: "Adj Close"       # Price field to use from Yahoo Finance (e.g., "Adj Close", "Close")
+
+portfolio:
+  weights: [0.5, 0.5]            # Portfolio weights for each ticker (must sum to 1.0)
+                                 # Order corresponds to tickers list above
+
+model:
+  dt: 1                          # Time step in trading days (1 = daily)
+  horizon_days: 10               # Simulation horizon in trading days (e.g., 10 days, 252 = 1 year)
+  return_type: "log"             # Type of returns: "log" for log-returns or "simple" for arithmetic returns
+  distribution: "normal"         # Return distribution assumption (currently only "normal" implemented)
+
+simulation:
+  n_paths: 100000                # Number of Monte Carlo simulation paths to generate
+  random_seed: 42                # Random seed for reproducibility (set to null for random results)
+
+risk:
+  confidence_levels: [0.95, 0.99]  # List of confidence levels for VaR/ES (e.g., 0.95 = 95%, 0.99 = 99%)
+  compute_expected_shortfall: true # Whether to compute Expected Shortfall (ES) in addition to VaR
+
+output:
+  results_dir: "outputs/"        # Directory where results will be saved
+  save_loss_samples: true        # Whether to save all simulated loss values to CSV file
+  make_plots: true               # Whether to generate histogram and cumulative distribution plots
