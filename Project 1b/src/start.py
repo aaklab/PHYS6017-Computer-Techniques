@@ -1,14 +1,16 @@
 import numpy as np
-from src.config_loader import load_config
-from src.data_loader import load_data, compute_returns
-from src.parameter_estimation import estimate_parameters
-from src.simulation import generate_correlated_returns
-from src.risk_metrics import compute_portfolio_losses, compute_risk_metrics
-from src.visualisation import save_results
+import os
+from config_loader import load_config
+from data_loader import load_data, compute_returns
+from parameter_estimation import estimate_parameters
+from simulation import generate_correlated_returns
+from risk_metrics import compute_portfolio_losses, compute_risk_metrics
+from visualisation import save_results
 
-# Load configuration
+# Load configuration (look in same directory as this script)
 print("Loading configuration...")
-config = load_config('config.yaml')
+config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.yaml')
+config = load_config(config_path)
 
 # Load and process data
 print("Loading data...")
@@ -33,7 +35,7 @@ risk_metrics = compute_risk_metrics(losses, config)
 
 # Save results
 print("Generating results PDF...")
-output_file = save_results(losses, risk_metrics, config)
+output_file = save_results(losses, risk_metrics, config, mu, sigma, R, prices, paths)
 
 print(f"\nResults:")
 for metric, value in risk_metrics.items():

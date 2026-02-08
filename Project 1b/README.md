@@ -10,7 +10,7 @@ pip install -r requirements.txt
 
 ## Configuration
 
-Edit `config.yaml` to customize:
+Edit `src/config.yaml` to custom:
 - Data source, tickers, and date range
 - Portfolio weights
 - Model parameters (time horizon, return type)
@@ -20,19 +20,26 @@ Edit `config.yaml` to customize:
 
 ## Usage
 
-```bash
-python start.py
+Run fro
+
+```sh
+t.py
 ```
 
-Results will be saved to the directory specified in `config.yaml` (default: `outputs/results.pdf`).
+Results will.
+
+## Data Caching
+
+Downloaded price data is automatically cached in the `datnload.
 
 ## Structure
 
-- `config.yaml`: Configuration file for all parameters
-- `start.py`: Main entry point
-- `src/config_loader.py`: Load and validate configuration
-- `src/data_loader.py`: Load and clean price data
-- `src/parameter_estimation.py`: Estimate μ, σ, and correlations
-- `src/simulation.py`: Generate Monte Carlo price paths
-- `src/risk_metrics.py`: Compute VaR and ES
-- `src/visualisation.py`: Produce plots and tables
+- `src/config.yaml`: Configuration file forters
+- `src/start.py`: Main entry point
+
+d tablesce plots anProdu`: lisation.pyua- `src/visnd ES
+e VaR a: Computy`trics.pc/risk_mepaths
+- `srlo price onte Carnerate M: Gepy`simulation. `src/tions
+-correla μ, σ, and aten.py`: Estimtiostimaameter_erc/pare data
+- `sn pricand cleapy`: Load data_loader.on
+- `src/uratite config and valida: Loadader.py`config_losrc/- `
